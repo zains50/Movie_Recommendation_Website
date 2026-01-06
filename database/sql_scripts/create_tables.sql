@@ -1,36 +1,36 @@
-create TABLE WEBSITE_USER ( 
-    user_id UUID PRIMARY KEY,
-    user_name TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL,
-    password_hash TEXT NOT NULL
-);
+-- create TABLE WEBSITE_USER ( 
+--     user_id UUID PRIMARY KEY,
+--     user_name TEXT NOT NULL,
+--     email TEXT UNIQUE NOT NULL,
+--     password_hash TEXT NOT NULL
+-- );
 
 
--- CREATED
-CREATE TABLE GENRE ( 
-    genre_id INT PRIMARY KEY, 
-    genre_name varchar(80)
-);
+-- -- CREATED
+-- CREATE TABLE GENRE ( 
+--     genre_id INT PRIMARY KEY, 
+--     genre_name varchar(80)
+-- );
 
--- CREATED
-CREATE TABLE PERSON ( 
-    person_id INT PRIMARY KEY,
-    person_name varchar(120) NOT NULL
-);
+-- -- CREATED
+-- CREATE TABLE PERSON ( 
+--     person_id INT PRIMARY KEY,
+--     person_name varchar(120) NOT NULL
+-- );
 
--- CREATED 
-CREATE TABLE ROLES ( 
-    role_id SERIAL PRIMARY KEY,
-    role_name VARCHAR(40) UNIQUE NOT NULL
-);
+-- -- CREATED 
+-- CREATE TABLE ROLES ( 
+--     role_id SERIAL PRIMARY KEY,
+--     role_name VARCHAR(40) UNIQUE NOT NULL
+-- );
 
 
--- CREATED 
-CREATE TABLE CONTENT_RATING ( 
-    content_rating_id INT PRIMARY KEY, 
-    content_rating varchar(40),
-    content_rating_description TEXT
-);
+-- -- CREATED 
+-- CREATE TABLE CONTENT_RATING ( 
+--     content_rating_id INT PRIMARY KEY, 
+--     content_rating varchar(40),
+--     content_rating_description TEXT
+-- );
 
 
 -- CREATED 
@@ -42,7 +42,16 @@ CREATE TABLE MOVIE (
     year INT,
     released DATE,
     runtime_mins INT,
-    poster_link TEXT
+    poster_link TEXT,
+
+    language TEXT,
+    country TEXT,
+    imdb_rating FLOAT, 
+    imdb_votes INT, 
+    imdb_id TEXT, 
+    box_office INT,
+    type TEXT
+
 
 );
 

@@ -2,23 +2,18 @@ import json
 import psycopg2
 from tqdm import tqdm
 from psycopg2 import sql
-
 from datetime import datetime
 
 
-## DATA BASE CONNECTION
-
-with open ("data/db_config.json") as f:
-    db_config = json.load(f)
-
-conn = psycopg2.connect(**db_config)
+from database.database  import DATABASE_CONNECTION
+conn = DATABASE_CONNECTION.conn 
 conn.autocommit = True 
 cursor = conn.cursor()
 
 
 ## CODE TO FILL TABLES
 
-with open('data/movie_info_with_uuid.json', encoding="utf-8") as f:
+with open('_data/movie_info_with_uuid.json', encoding="utf-8") as f:
     genres = []
     movie_information = json.load(f)
 
@@ -107,10 +102,10 @@ def fill_content_rating_table(movie_information_json):
         cursor.execute(query, (i,r, desc))
 
 def fill_movie_table(movie_information_json):
-    movies = []
+
     cursor.execute("DELETE FROM MOVIE")
 
-    query = sql.SQL("INSERT INTO MOVIE ({col1}, {col2}, {col3}, {col4}, {col5}, {col6}, {col7}, {col8}) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)").format( 
+    query = sql.SQL("INSERT INTO MOVIE ({col1}, {col2}, {col3}, {col4}, {col5}, {col6}, {col7}, {col8}, {col9}, {col10},{col11},{col12},{col13},{col14},{col15}) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)").format( 
             col1=sql.Identifier("movie_id"),
             col2=sql.Identifier("movie_title"),
             col3=sql.Identifier("content_rating_id"),
@@ -119,14 +114,21 @@ def fill_movie_table(movie_information_json):
             col6=sql.Identifier("released"),
             col7=sql.Identifier("runtime_mins"),
             col8=sql.Identifier("poster_link"),
+            col9  = sql.Identifier("language"),
+            col10 = sql.Identifier("country"),
+            col11 = sql.Identifier("imdb_rating"),
+            col12 = sql.Identifier("imdb_votes"),
+            col13 = sql.Identifier("imdb_id"),
+            col14 = sql.Identifier("box_office"),
+            col15 = sql.Identifier("type"),
             
     )
+    added_movie_ids = []
     
     for movie in tqdm(movie_information_json):
         if movie["Genre"] == "NOT_FOUND":
             continue 
 
-        added_movie_ids = []
 
         movie_title = movie["Title"]
         movie_rating = movie["Rated"]
@@ -136,6 +138,16 @@ def fill_movie_table(movie_information_json):
         movie_runtime = movie["Runtime"].split(" ")[0]
         movie_poster = movie["Poster"]
         movie_id = movie["UUID"]
+        movie_language = movie["Language"]
+        movie_country = movie["Country"]
+        
+        movie_boxOffice = int(movie.get("BoxOffice", "N/A").replace("$","").replace(",", "")) if movie.get("BoxOffice", "N/A") != "N/A" else None
+        movie_imdbRating = float(movie.get("imdbRating", "N/A")) if movie.get("imdbRating", "N/A") != "N/A" else None
+        movie_imdbVotes  = int(movie.get("imdbVotes", "N/A").replace(",", "")) if movie.get("imdbVotes", "N/A") != "N/A" else None
+
+        movie_imdbID = movie["imdbID"]
+        
+        movie_type = movie["Type"]
 
         if movie_id in added_movie_ids:
             continue;
@@ -158,7 +170,7 @@ def fill_movie_table(movie_information_json):
             movie_runtime = None 
 
         # print(movie_release_date)
-        cursor.execute(query, (movie_id, movie_title,movie_rating_id,movie_plot, movie_year, movie_release_date, movie_runtime, movie_poster))
+        cursor.execute(query, (movie_id, movie_title,movie_rating_id,movie_plot, movie_year, movie_release_date, movie_runtime, movie_poster, movie_language, movie_country, movie_imdbRating, movie_imdbVotes, movie_imdbID, movie_boxOffice,movie_type))
        
 
 def fill_movie_genre_table(movie_information_json):

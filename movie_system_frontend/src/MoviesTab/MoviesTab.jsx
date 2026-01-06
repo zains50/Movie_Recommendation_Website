@@ -1,21 +1,29 @@
 import "./MoviesTab.css";
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import MoviePlate from "./../MoviePlate/MoviePlate"
 
+import { get_top_movie_uuids_by_box_office } from "./../api/api"
+
 export default function MovieTab({}){
+    var top_movie_uuids
 
-    let default_arrays = []
-    for (let i =0; i < 8*10; i++){
-        default_arrays = [...default_arrays, i]
-    }
+    const [array_of_top_movie_uuids, setArrayOfTopMovieUuids] = useState([])
 
-    const [movieList, setMovieList] = useState(default_arrays)
-    // const movieList = [1,2,3,4,5,6,7,8,3,123,8001]
-
+    useEffect(() => {
+        async function load() {
+            try {
+                const result = await get_top_movie_uuids_by_box_office(100);
+                setArrayOfTopMovieUuids(result.uuid);
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+        load();
+    }, []);
 
     return (
         <div className="MoviesTab">   
-        {movieList.map((movie) => (
+        {array_of_top_movie_uuids.map((movie) => (
             <MoviePlate movie_id={movie}></MoviePlate>
         ))}
         </div>

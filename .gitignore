@@ -7,3 +7,4 @@ ML_Training/ml-1m/*.npy
 __pycache__/
 .idea/
 .vscode/
+commands.txt

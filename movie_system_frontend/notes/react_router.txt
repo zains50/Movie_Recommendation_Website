@@ -1,0 +1,17 @@
+
+We start with the react routing : specifically nested routing 
+
+<Route path="/search" element={<SearchDefaultPage />}>
+    <Route path=":search_query" element={<SearchPageResults />} />
+</Route>
+
+Simple: When the URL starts with /search render SearchDefaultPage and then depending on what
+comes after /search render something inside of ti .
+
+The top outer route SearchDefaultPage renders the following
+<div className="MovieDefaultPage">
+    <TopBar />
+    <Outlet />
+</div>
+
+Here, <Outletr/> is a placeholder, which tells react to put the child route where outlet is. 

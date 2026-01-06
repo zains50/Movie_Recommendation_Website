@@ -10,9 +10,10 @@ class SearchQuery(BaseModel):
 
 @search_router.get("/search/{search_query}")
 def get_search_values(search_query: str):
+    print(search_query)
     search_query_dict = {"message" : "search_query_results"}
     return_values_uuid = SEARCH_ENGINE.search(search_query=search_query, return_k=100)
-    search_query_dict = {"results" : return_values_uuid}
+    search_query_dict = {"uuid" : return_values_uuid}
 
     return search_query_dict
 

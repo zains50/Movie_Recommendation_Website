@@ -1,7 +1,18 @@
 import "./TopBar.css"
 
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate()
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") { 
+      const query = e.target.value
+      if (query) {
+        navigate(`/search/${encodeURIComponent(query)}`)
+      }
+    } 
+  }
 
   
   return (
@@ -15,6 +26,8 @@ export default function Navbar() {
                 id="search-form"
                 className="search-input" 
                 placeholder="Search items..."
+                onKeyDown={handleKeyDown}
+                
             />
         </div>
 

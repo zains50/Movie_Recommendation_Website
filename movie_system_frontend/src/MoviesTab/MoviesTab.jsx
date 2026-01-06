@@ -4,6 +4,9 @@ import MoviePlate from "./../MoviePlate/MoviePlate"
 
 import { get_top_movie_uuids_by_box_office } from "./../api/api"
 
+
+
+
 export default function MovieTab({}){
     var top_movie_uuids
 

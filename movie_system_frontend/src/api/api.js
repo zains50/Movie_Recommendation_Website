@@ -2,6 +2,7 @@ import axios from "axios"
 
 const BASE_URL = "http://localhost:8000"
 // 99023790-0811-4435-b225-5c25b966af15
+
 export async function getSearchResults(search_query) { 
     var backend = `${BASE_URL}/search/${search_query}`
     try  {

@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
+from backend.recommendation_engine.rec_engine import get_recommendations
 from backend.process_search_query import search_router  # import the router
 from backend.get_movie_info import movie_information
 app = FastAPI()
@@ -31,33 +32,14 @@ class User(BaseModel):
     password: str
     email: str
 
-# create an item
-@app.post("/users/{user_id}")
-def create_user(item_id: int, user: User):
-    # items_db[item_id] = item
-    # print(f"New items: {items_db}")
-    return {"message" : "Item stored", "item":0}
+# get recommendations
+@app.get("/recommend/{watch_list}")
+def create_user(watch_list : str):
+    watch_list = watch_list.split(",")
+    recs = get_recommendations(watch_list)
+    return {"recommendations" : recs}
 
 @app.get("/")
 def read_root():
-    return {"Hello" : "i am a noobyyy"}
-
-# create an item
-@app.post("/items/{item_id}")
-def create_item(item_id: int, item: Item):
-    items_db[item_id] = item
-    print(f"New items: {items_db}")
-    return {"message" : "Item stored", "item":item}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int):
-    if item_id not in items_db:
-        return {"error": "Item not found"}
-
-    return items_db[item_id]
-
-@app.put("/items/{item_id}")
-def update_item(item_id: int, item: Item):
-    return {"item_name": item.name, "item_id":item_id}
+    return {"Hello" : "i am a noob"}
 

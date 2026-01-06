@@ -12,7 +12,7 @@ class search_engine():
     def __init__(self, movie_embedding_folder):
         print("search_engine.py: LOADING SEARCH ENGINE")
         movie_embedding_folder = Path(movie_embedding_folder)
-        processed_dir = Path("_data/_movie_emb_processed")
+        processed_dir = Path("_data/_movie_emb_processed_for_search")
         self.TEXT_MODEL  = SentenceTransformer("all-mpnet-base-v2")
         
         if processed_dir.is_dir():

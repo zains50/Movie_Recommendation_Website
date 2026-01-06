@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Outlet } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useState } from "react"
+import { useEffect } from "react";
+
+import { get_movie_information_from_uuid } from '../api/api';
 import MovieData from "./../assets/movie_info.json"
 import TopBar from "./../TopBar/TopBar"
 
@@ -16,44 +19,78 @@ export function MovieDefaultPage(){
     )
 }
 
-async function loadWatchlist() {
-  const res = await fetch("/watch_list.txt");
-  const text = await res.text();
-  return text.split(",").map(Number); // convert to numbers
-}
+// async function loadWatchlist(movie_id) {
+//   const res = await fetch("/watch_list.txt");
+//   const text = await res.text();
+//   return text.split(",").map(Number); // convert to numbers
+// }
 
 
 
 export default function MoviePage() {
   const { movie_id } = useParams();
-  const poster_link = `/posters/${movie_id}.jpg`
-  const movie_list_text = "/watch_list.txt" 
-
-  const movie_json = MovieData[movie_id]
-  const movie_name = movie_json["Title"]
-  const year = movie_json["Year"]
-  const plot = movie_json["Plot"]
-  const genres = movie_json["Genre"]
-  const imdbRating = movie_json["imdbRating"]
-  const numRatings = movie_json["imdbVotes"]
-  const boxOffice = movie_json["BoxOffice"]
-  const actors = movie_json["Actors"]
-
-  const [inWatchList, setInWatchList] = useState(false)
-
+  const poster_link = `/_posters/${movie_id}.jpg`
+  const [movieData, setMovieData] = useState({})
+  const [WatchList, setWatchList] = useState(new Map())
+  const inWatchList = WatchList.has(movie_id)
   
+  async function loadWatchList() { 
+    try { 
+      const watch_list = localStorage.getItem("watch_list")
+      if (watch_list == null) { 
+        const watch_list = new Map()
+        localStorage.setItem("watch_list", JSON.stringify([...watch_list]))
+        return watch_list
+      } else { 
+        return new Map(JSON.parse(watch_list))
+      }
 
-  function handleClick(){
-    setInWatchList(prev => !prev)
-    
-
-    if (setInWatchList) {
-      text_watch_list = loadWatchlist()
-      console.log(text_watch_list)
+    } catch (error) {
+      console.error(error)
     }
-
   }
 
+  // to handle a new click 
+  // create a new map
+  // modify the map
+  // pass it to setwatchlist
+  function handleClick() {
+    setWatchList(prevWatchList => { 
+      const newWatchList = new Map(prevWatchList)
+      if (!newWatchList.has(movie_id)) {
+        newWatchList.set(movie_id , true)
+      } else { 
+        newWatchList.delete(movie_id)
+      }
+      return newWatchList
+    })
+  }
+
+  useEffect(() => {
+    loadWatchList().then(setWatchList)
+  }, [])
+
+  useEffect(() => {
+  localStorage.setItem(
+    "watch_list",
+    JSON.stringify([...WatchList])
+  )
+  }, [WatchList])
+
+
+  useEffect( () => { 
+    async function load(movie_id) { 
+      try { 
+        const result = await get_movie_information_from_uuid(movie_id)
+        setMovieData(result)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    if (movie_id) { 
+      load(movie_id)
+    }
+  } , [movie_id])
 
   return (
     <div className="MoviePage">
@@ -63,14 +100,15 @@ export default function MoviePage() {
       </div>
 
       <div className="MovieInfoContainer">
-        <header>Movie: {movie_name} ({year})</header>
-        <section>Plot: {plot}</section>
-        <section>Genres : {genres}</section>
-        <section>IMDB Rating : {imdbRating}</section>
-        <section>Ratings: {numRatings}</section>
-        <section>Box Office: {boxOffice}</section>
-        <section>Actors : {actors}</section>
+        <header>Movie: {movieData["movie_title"]} ({movieData["year"]})</header>
+        
+        <section>Plot: {movieData["plot"]}</section>
+        <section>Genres : {movieData["genres"]}</section>
+        <section>IMDB Rating : {movieData["imdb_rating"]}</section>
+        <section>Ratings: {movieData["num_ratings"]}</section>
+
       </div>
     </div>
   );
 }
+

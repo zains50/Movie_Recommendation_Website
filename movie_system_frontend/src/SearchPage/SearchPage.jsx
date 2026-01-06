@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react"
 import MoviePlate from "./../MoviePlate/MoviePlate"
 import TopBar from "./../TopBar/TopBar"
@@ -25,6 +24,12 @@ export function SearchPageResults() {
     // When the state updats, the component re-renders  
     const [search_results, setArrayOfMovieResults] = useState([]);
 
+    // Use effect changes whenever search_query changes
+    // format: useEffect(effectFunction, dependencyArray)
+    // effect runs once after render, and then re-runs whenever any dependency changes
+    // Here we also have the notation 
+    // () => { } which is another way or writing function () { } 
+    // then inside the function we have an async function, which we call
     useEffect(() => {
         async function load() {
             try {

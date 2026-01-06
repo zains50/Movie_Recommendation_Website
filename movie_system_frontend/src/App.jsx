@@ -6,7 +6,7 @@ import MoviePage from './MoviePage/MoviePage'
 import WatchList from "./WatchList/WatchList"
 import { SearchDefaultPage, SearchPageResults } from './SearchPage/SearchPage'
 import { MovieDefaultPage } from "./MoviePage/MoviePage"
-
+import Recommendations from './recommendations/recommendations'
 
 export default function App() {
 
@@ -28,6 +28,7 @@ export default function App() {
 
   
       <Route path="/watch_list" element = {<WatchList/>}/>
+      <Route path="/recommendations" element = {<Recommendations/>}/>
     </Routes>
     </div>
 

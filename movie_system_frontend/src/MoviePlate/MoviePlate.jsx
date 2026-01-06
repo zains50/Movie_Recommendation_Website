@@ -7,6 +7,8 @@ import { useEffect } from "react";
 export default function MoviePlateDemo({movie_id}){
     var k = 20
     const [movie_title, setMovieTitle] = useState("")
+    const [isInWatchList, setInWatchList] = useState(false) 
+
 
     useEffect( () => { 
         let alive = true; 
@@ -35,11 +37,12 @@ export default function MoviePlateDemo({movie_id}){
         };
     }, [movie_id])
 
+    
 
 
     const movie_poster = `/_posters/${movie_id}.jpg`;
     
-    const link_route = `movie/${movie_id}`
+    const link_route = `/movie/${movie_id}`
 
     return ( 
         <div className="MoviePlate">

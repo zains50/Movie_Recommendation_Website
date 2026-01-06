@@ -83,19 +83,3 @@ export async function get_movie_recommendations() {
 
 }
 
-// getMovieTitleFromUUID("99023790-0811-4435-b225-5c25b966af15")
-//         .then(result => { 
-//             console.log(result)
-//         })
-//         .catch(erorr => { 
-//             console.error("Error: ", error)
-//     })
-
-
-get_top_movie_uuids_by_box_office(10)
-        .then(result => { 
-            console.log(result)
-        })
-        .catch(erorr => { 
-            console.error("Error: ", error)
-    })

@@ -4,8 +4,8 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.recommendation_engine.rec_engine import get_recommendations
-from backend.process_search_query import search_router  # import the router
-from backend.get_movie_info import movie_information
+from backend.API.process_search_query import search_router  # import the router
+from backend.API.get_movie_info import movie_information
 app = FastAPI()
 
 app.add_middleware(

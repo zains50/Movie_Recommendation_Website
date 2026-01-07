@@ -13,7 +13,7 @@
     A fully designed Movie Recommendation System from Scratch
     <!-- <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
+    <br />\
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
     &middot;
@@ -54,7 +54,7 @@
 
 We developed machine learning model for movie recommendation using the MovieLens-1M dataset. The model uses data of users and movies they have watched. Additional features were encoded such as movie metadata and posters to enrich the model and improve recommendation. 
 
-After training, the machine learning model was deployed to a web application built with React for the frontend, FastAPI for the backend. Movie metadata and user data was stored and managed in a PostgreSQL database.
+After training, the machine learning model was deployed to a web application built with React for the frontend, FastAPI for the backend. Movie metadata and user data was stored and managed in a PostgreSQL database. For the full pipeline see [Model Pipline](#Model-Pipeline)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -80,3 +80,4 @@ After training, the machine learning model was deployed to a web application bui
 
 
 
+## Model Pipeline

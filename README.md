@@ -111,6 +111,7 @@ $$
 \quad \quad 
 \mathbf{M}^{(1)} = \sigma \Big( \mathbf{W}_m^{(0)} \mathbf{M}^{(0)} + \mathbf{b}_m^{(0)} \Big)
 $$
+
 $$
 Where
 - \(\mathbf{U}\) are the features of the users
@@ -119,10 +120,10 @@ Where
 $$
 3. **Feature Enhancing**  
    We enrich user features by encoding the movies they have watched into their feature vector. To do this, we add the embeddings of all the movies the user has watched into their own feature vector. 
-
 $$
 \mathbf{U}_u^{(2)} = \mathbf{U}_u^{\text{(1)}} + \sum_{i \in \mathcal{M}_u} \mathbf{M}_i^{(1)}
-
+$$
+$$
 Where 
 
 - \(\mathbf{U}_u^{\text{(1)}}\) is the user's transformed feature vector (e.g., age, gender, occupation)  

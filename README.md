@@ -114,9 +114,9 @@ $$
 
 $$
 \text{Where}
-- \(\mathbf{U}\) are the features of the users
-- \(\mathbf{M}\) are the features of the movies
-- \(\mathbf{W}  \ \text{and} \ \mathbf{b}\) are learnable parameters
+\(\mathbf{U}\) are the features of the users
+\(\mathbf{M}\) are the features of the movies
+\(\mathbf{W}  \ \text{and} \ \mathbf{b}\) are learnable parameters
 $$
 
 3. **Feature Enhancing**  

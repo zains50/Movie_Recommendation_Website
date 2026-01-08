@@ -114,7 +114,7 @@ $$
 
 $$
 \text{Where}
-\(\mathbf{U}\) are the features of the users \\
+\(\mathbf{U}\) \text{are the features of the users \\
 \(\mathbf{M}\) are the features of the movies \\
 \(\mathbf{W}  \ \text{and} \ \mathbf{b}\) are learnable parameters \\
 $$
@@ -126,12 +126,12 @@ $$
 \mathbf{U}_u^{(2)} = \mathbf{U}_u^{\text{(1)}} + \sum_{i \in \mathcal{M}_u} \mathbf{M}_i^{(1)}
 $$
 
-$$
-\text{Where} 
-\(\mathbf{U}_u^{\text{(1)}}\) is the user's transformed feature vector (e.g., age, gender, occupation)   \\
-\(\mathcal{M}_u\) is the set of movies watched by user \(u\)   \\
-\(\mathbf{M}_i^{(1)}\) is the embedding vector of movie \(i\) \\
-$$
+
+Where 
+$$ \(\mathbf{U}_u^{\text{(1)}}\) $$ is the user's transformed feature vector (e.g., age, gender, occupation)   
+$$ \(\mathcal{M}_u\) $$ is the set of movies watched by user \(u\)   
+$$ \(\mathbf{M}_i^{(1)}\) $$ is the embedding vector of movie \(i\) 
+
 
 
 4. **Deep Layer Transformations**  

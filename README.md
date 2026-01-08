@@ -113,11 +113,12 @@ $$
 $$
 
 $$
-Where
+\text{Where}
 - \(\mathbf{U}\) are the features of the users
 - \(\mathbf{M}\) are the features of the movies
 - \(\mathbf{W}  \ \text{and} \ \mathbf{b}\) are learnable parameters
 $$
+
 3. **Feature Enhancing**  
    We enrich user features by encoding the movies they have watched into their feature vector. To do this, we add the embeddings of all the movies the user has watched into their own feature vector. 
 $$

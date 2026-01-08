@@ -107,16 +107,16 @@ Our training pipeline consists of three main stages.
    We apply a linear transformation to the user and movie embeddings, projecting them into the same dimensional space.
 
 $$
-\mathbf{U}^{(1)} = \sigma \Big( \mathbf{W}_u^{(0)} \mathbf{U}^{(0)} + \mathbf{b}_u^{(0)} \Big)
+\mathbf{U}^{(1)} = \sigma \Big( \mathbf{W}_u^{(0)} \mathbf{U}^{(0)} + \mathbf{b}_u^{(0)} \Big) \\
 \quad \quad 
-\mathbf{M}^{(1)} = \sigma \Big( \mathbf{W}_m^{(0)} \mathbf{M}^{(0)} + \mathbf{b}_m^{(0)} \Big)
+\mathbf{M}^{(1)} = \sigma \Big( \mathbf{W}_m^{(0)} \mathbf{M}^{(0)} + \mathbf{b}_m^{(0)} \Big) \\
 $$
 
 $$
 \text{Where}
-\(\mathbf{U}\) are the features of the users
-\(\mathbf{M}\) are the features of the movies
-\(\mathbf{W}  \ \text{and} \ \mathbf{b}\) are learnable parameters
+\(\mathbf{U}\) are the features of the users \\
+\(\mathbf{M}\) are the features of the movies \\
+\(\mathbf{W}  \ \text{and} \ \mathbf{b}\) are learnable parameters \\
 $$
 
 3. **Feature Enhancing**  

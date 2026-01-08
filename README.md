@@ -111,17 +111,18 @@ Our training pipeline consists of three main stages.
     \quad \quad 
     \mathbf{M}^{(1)} = \sigma \Big( \mathbf{W}_m^{(0)} \mathbf{M}^{(0)} + \mathbf{b}_m^{(0)} \Big)
     $$
+    $$
     Where
     - \(\mathbf{U}\) are the features of the users
     - \(\mathbf{M}\) are the features of the movies
     - \(\mathbf{W}  \ \text{and} \ \mathbf{b}\) are learnable parameters
     $$
-2. **Feature Enhancing**  
+3. **Feature Enhancing**  
    We enrich user features by encoding the movies they have watched into their feature vector. To do this, we add the embeddings of all the movies the user has watched into their own feature vector. 
 
     $$
     \mathbf{U}_u^{(2)} = \mathbf{U}_u^{\text{(1)}} + \sum_{i \in \mathcal{M}_u} \mathbf{M}_i^{(1)}
-    $$
+    
     Where 
     
     - \(\mathbf{U}_u^{\text{(1)}}\) is the user's transformed feature vector (e.g., age, gender, occupation)  
@@ -130,14 +131,14 @@ Our training pipeline consists of three main stages.
     $$
 
 
-3. **Deep Layer Transformations**  
+4. **Deep Layer Transformations**  
 
 
     ![alt text](pictures/deep_layers2.jpg)
     
     We then pass movie and user embeddings through respective neural network towers. Each layer linearly transforms the embedding, applies a ReLU activation function for non-linearity and then a drop-out to prevent over fitting. 
 
-4. **Final Feature Stacking**
+5. **Final Feature Stacking**
     To generate the final features for users and movies, we take the average sum of all the features obtained each layer. 
 
 #### Optimization and Loss Function 

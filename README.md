@@ -112,12 +112,12 @@ $$
 \mathbf{M}^{(1)} = \sigma \Big( \mathbf{W}_m^{(0)} \mathbf{M}^{(0)} + \mathbf{b}_m^{(0)} \Big) \\
 $$
 
-$$
+
 \text{Where}
-\(\mathbf{U}\) \text{are the features of the users \\
-\(\mathbf{M}\) are the features of the movies \\
-\(\mathbf{W}  \ \text{and} \ \mathbf{b}\) are learnable parameters \\
-$$
+$$ \(\mathbf{U}\) $$ are the features of the users 
+$$ \(\mathbf{M}\) $$ are the features of the movies 
+$$ \(\mathbf{W}  $$ and  $$ \mathbf{b}\) $$ are learnable parameters 
+
 
 3. **Feature Enhancing**  
    We enrich user features by encoding the movies they have watched into their feature vector. To do this, we add the embeddings of all the movies the user has watched into their own feature vector.

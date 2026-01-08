@@ -113,10 +113,17 @@ $$
 $$
 
 
-\text{Where}
-$$ \(\mathbf{U}\) $$ are the features of the users 
-$$ \(\mathbf{M}\) $$ are the features of the movies 
-$$ \(\mathbf{W}  $$ and  $$ \mathbf{b}\) $$ are learnable parameters 
+\text{where}
+\[
+\mathbf{U} \text{ are the features of the users,}
+\]
+\[
+\mathbf{M} \text{ are the features of the movies,}
+\]
+\[
+\mathbf{W} \text{ and } \mathbf{b} \text{ are learnable parameters.}
+\]
+
 
 
 3. **Feature Enhancing**  
@@ -127,10 +134,16 @@ $$
 $$
 
 
-Where 
-$$ \(\mathbf{U}_u^{\text{(1)}}\) $$ is the user's transformed feature vector (e.g., age, gender, occupation)   
-$$ \(\mathcal{M}_u\) $$ is the set of movies watched by user \(u\)   
-$$ \(\mathbf{M}_i^{(1)}\) $$ is the embedding vector of movie \(i\) 
+\text{where}
+\[
+\mathbf{U}_u^{(1)} \text{ is the user's transformed feature vector (e.g., age, gender, occupation),}
+\]
+\[
+\mathcal{M}_u \text{ is the set of movies watched by user } u,
+\]
+\[
+\mathbf{M}_i^{(1)} \text{ is the embedding vector of movie } i.
+\]
 
 
 

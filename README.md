@@ -128,9 +128,9 @@ $$
 
 $$
 \text{Where} 
-\(\mathbf{U}_u^{\text{(1)}}\) is the user's transformed feature vector (e.g., age, gender, occupation)  
-\(\mathcal{M}_u\) is the set of movies watched by user \(u\)  
-\(\mathbf{M}_i^{(1)}\) is the embedding vector of movie \(i\)
+\(\mathbf{U}_u^{\text{(1)}}\) is the user's transformed feature vector (e.g., age, gender, occupation)   \\
+\(\mathcal{M}_u\) is the set of movies watched by user \(u\)   \\
+\(\mathbf{M}_i^{(1)}\) is the embedding vector of movie \(i\) \\
 $$
 
 

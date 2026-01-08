@@ -115,6 +115,7 @@ Our training pipeline consists of three main stages.
     - \(\mathbf{U}\) are the features of the users
     - \(\mathbf{M}\) are the features of the movies
     - \(\mathbf{W}  \ \text{and} \ \mathbf{b}\) are learnable parameters
+    $$
 2. **Feature Enhancing**  
    We enrich user features by encoding the movies they have watched into their feature vector. To do this, we add the embeddings of all the movies the user has watched into their own feature vector. 
 
@@ -126,7 +127,7 @@ Our training pipeline consists of three main stages.
     - \(\mathbf{U}_u^{\text{(1)}}\) is the user's transformed feature vector (e.g., age, gender, occupation)  
     - \(\mathcal{M}_u\) is the set of movies watched by user \(u\)  
     - \(\mathbf{M}_i^{(1)}\) is the embedding vector of movie \(i\)
-    
+    $$
 
 
 3. **Deep Layer Transformations**  
